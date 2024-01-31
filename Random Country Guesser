@@ -1,0 +1,127 @@
+#include <cstdlib>
+#include <Windows.h>
+#include <iostream>
+#include <time.h>
+#include <string>
+#include <cmath>
+using namespace std;
+
+class game
+{
+    public:
+    int n;
+        string arr[23]= {"india","pakistan","australia","russia","china","israel","sri lanka","indonesia","germany","france","spain","mexico","spain","turkey","greece","japan","thailand","austria","canada","thailand","bangladesh","brazil","netherlands"};
+        string str;
+        int len;
+        string str_new="****************************";
+        int counter=0;
+
+
+    int random()
+    {
+    
+        len =sizeof(arr)/sizeof(arr[0]);
+        srand(time(0));
+        n=rand();
+        n=n%len;
+        str=arr[n];
+        return (str.length());
+
+
+    }
+    int check(char ch)
+    {
+       
+        len=str.length();
+        // string str =arr[n];
+        int count=0;
+        for(int i=0;i<len;i++)
+        {
+            char c = str.at(i);
+            if(c==ch)
+            {
+                count++;
+            }
+        }
+        if(count>0)
+        {
+            return 1;
+        }
+        else
+        return 0;
+    }
+    
+
+    void guess(char ch)
+    {
+        
+        len=str.length();
+        // string str =arr[n];
+        
+        for(int i=0;i<len;i++)
+        {
+            char c = str.at(i);
+            if(c==ch)
+            {
+                str_new[i]=ch;
+                counter++;
+            }
+        }
+    }
+    void display(int x)
+    {
+        
+        for(int i=0;i<x;i++)
+        {
+            cout<<str_new[i];
+        }
+        cout<<endl;
+    }
+};
+
+    int main()
+    {
+        cout<<"YO"<<endl;
+        cout<<"guess the country"<<endl;
+        cout<<"you have 5 tries"<<endl;
+        game obj;
+        int leng = obj.random();
+        int turns=5,p=9;
+        obj.display(leng);
+        // cout<<obj.str<<endl;
+        while(turns>0)
+        {
+        cout<<"enter alphabet"<<endl;
+        char ch;
+        cin>>ch;
+        
+        
+        
+        p=obj.check(ch);
+        // cout<<p<<endl;
+       
+        // cout<<obj.str<<endl;
+        if(p==0)
+        {
+            
+            turns--;
+            cout<<"You have "<<turns<<"  tries left"<<endl; 
+        }
+        obj.guess(ch);
+        obj.display(leng);
+        if(obj.counter==obj.len)
+        {
+            cout<<"Congratulations You Guessed It Right"<<endl;
+            exit(5);
+        }
+        else if(turns==0)
+        {
+            cout<<"You Could Not Guess It Right"<<endl;
+            cout<<"The country was "<<obj.str<<endl;
+            exit(5);
+        }
+        }
+        
+    }
+
+
