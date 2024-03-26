@@ -1,2 +1,4 @@
 # Games
-This is a Game repository, welcome!  This repo would contain a wide range of games that I develop as I learn and improve my C++/Java skills.
+Currently, this repository contains 
+1) Tic-Tac-Toe with C++
+2) Random Country Guesser with C++
